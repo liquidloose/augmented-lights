@@ -57,3 +57,22 @@ function rivedge_augmented_lights_block_init() {
 	}
 }
 add_action( 'init', 'rivedge_augmented_lights_block_init' );
+/**
+ * Enqueue A-Frame script if Augmented Lights block is used
+ */
+/**
+ * Enqueue A-Frame script if Augmented Lights block is used
+ */
+function welcome_whiskey_enqueue_aframe() {
+	// Check if the current post contains our block
+	if (is_singular() && has_block('rivedge/augmented-lights')) {
+		wp_enqueue_script(
+			'aframe',
+			'https://aframe.io/releases/1.4.2/aframe.min.js', // Updated to latest stable version
+			array(),
+			'1.4.2',
+			true
+		);
+	}
+}
+add_action('wp_enqueue_scripts', 'welcome_whiskey_enqueue_aframe');
